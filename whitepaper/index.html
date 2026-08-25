@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whitepaper: De inname is het contactmoment — Habintel</title>
+<meta name="description" content="Waarom de gemakseconomie van gezondheid haar eigen belofte ondergraaft, en hoe de industrie dat kan keren. Gratis whitepaper van Habintel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;750;800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#101B18;--pine:#0E1B18;--paper:#F5F6F3;--orange:#FF6302;--orange-d:#D95502;--line:#D9DDD6;--mut:#5A665F;--mut-dark:#93A39B;
+--display:'Archivo',sans-serif;--body:'Instrument Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--body);color:var(--ink);background:var(--pine);line-height:1.6;font-size:17px;min-height:100vh;display:flex;flex-direction:column}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px;width:100%}
+nav{padding:20px 0}
+nav .wrap{display:flex;justify-content:space-between;align-items:center}
+.logo-svg{height:22px;width:auto;display:block}
+nav a.back{font-family:var(--mono);font-size:12px;color:var(--mut-dark);text-decoration:none;letter-spacing:.1em}
+nav a.back:hover{color:#fff}
+main{flex:1;display:flex;align-items:center;padding:40px 0 70px}
+.grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:16px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,4.6vw,46px);line-height:1.08;letter-spacing:-.015em;color:#fff;margin-bottom:20px}
+.lead{color:var(--mut-dark);font-size:18px;max-width:520px;margin-bottom:26px}
+.points{color:#fff;font-size:15.5px;max-width:520px;margin-bottom:8px}
+.points p{margin-bottom:12px;padding-left:26px;position:relative}
+.points p::before{content:"";position:absolute;left:0;top:7px;width:0;height:0;border-left:9px solid var(--orange);border-top:5px solid transparent;border-bottom:5px solid transparent}
+.card{background:#fff;border-radius:14px;padding:34px 30px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.card h2{font-family:var(--display);font-weight:750;font-size:21px;margin-bottom:6px}
+.card .sub{font-size:14px;color:var(--mut);margin-bottom:20px}
+label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin:14px 0 6px}
+input[type=text],input[type=email]{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:8px;font-family:var(--body);font-size:15px;background:var(--paper)}
+input:focus{outline:2px solid var(--orange);border-color:var(--orange)}
+.hp{position:absolute;left:-9999px;opacity:0}
+button{width:100%;margin-top:20px;background:var(--orange);color:#fff;border:none;border-radius:9px;padding:15px;font-family:var(--display);font-weight:750;font-size:16px;cursor:pointer;transition:background .15s}
+button:hover{background:var(--orange-d)}
+button:disabled{opacity:.6;cursor:wait}
+.fine{font-size:12px;color:var(--mut);margin-top:14px;line-height:1.5}
+.ok{display:none;text-align:center;padding:20px 0}
+.ok h2{font-family:var(--display);font-size:22px;margin-bottom:10px}
+.ok p{color:var(--mut);font-size:15px;margin-bottom:18px}
+.ok a.dl{display:inline-block;background:var(--orange);color:#fff;text-decoration:none;font-family:var(--display);font-weight:750;padding:14px 26px;border-radius:9px}
+footer{padding:22px 0;border-top:1px solid rgba(255,255,255,.08)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--mut-dark)}
+@media(max-width:860px){.grid{grid-template-columns:1fr;gap:40px}main{padding:16px 0 56px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="https://habintel.com" aria-label="habintel"><svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="18.7 -616.2 3062.9 646.5" role="img" aria-label="habintel">
+<path fill="#FFFFFF" d="M175.7 0L42.7 0L42.7-519.4L175.7-519.4L175.7-344.4Q198.1-365.4 227.2-375.6Q256.2-385.7 289.8-385.7L289.8-385.7Q333.9-385.7 369.6-367.9Q405.3-350.0 426.0-312.9Q446.6-275.8 446.6-217.0L446.6-217.0L446.6 0L313.6 0L313.6-195.3Q313.6-235.9 296.8-254.5Q280-273 251.3-273L251.3-273Q219.1-273 197.4-251.7Q175.7-230.3 175.7-183.4L175.7-183.4L175.7 0ZM885.5 0L761.6 0L761.6-48.3Q732.2 6.3 649.6 6.3L649.6 6.3Q581.7 6.3 545.0-27.3Q508.2-60.9 508.2-110.6L508.2-110.6Q508.2-163.1 548.5-193.6Q588.7-224.0 676.9-224.0L676.9-224.0L752.5-224.0Q750.4-252.7 731.2-268.5Q711.9-284.2 672-284.2L672-284.2Q644.7-284.2 616.7-275.5Q588.7-266.7 569.1-251.3L569.1-251.3L524.3-341.6Q556.5-362.6 601.7-374.2Q646.8-385.7 691.6-385.7L691.6-385.7Q784-385.7 834.8-343.4Q885.5-301.0 885.5-210.7L885.5-210.7L885.5 0ZM752.5-121.8L752.5-121.8L752.5-154.7L695.1-154.7Q662.9-154.7 650.0-144.2Q637-133.7 637-116.2L637-116.2Q637-99.4 650.3-88.6Q663.6-77.7 686.7-77.7L686.7-77.7Q708.4-77.7 726.3-88.6Q744.1-99.4 752.5-121.8ZM1208.2 6.3L1208.2 6.3Q1134 6.3 1096.2-37.8L1096.2-37.8L1096.2 0L969.5 0L969.5-519.4L1102.5-519.4L1102.5-346.5Q1141-385.7 1208.2-385.7L1208.2-385.7Q1260-385.7 1302-361.9Q1344-338.1 1369.2-294.4Q1394.4-250.6 1394.4-190.4L1394.4-190.4Q1394.4-129.5 1369.2-85.8Q1344-42.0 1302-17.9Q1260 6.3 1208.2 6.3ZM1180.2-99.4L1180.2-99.4Q1213.8-99.4 1236.9-123.2Q1260-147 1260-190.4L1260-190.4Q1260-233.1 1236.9-256.6Q1213.8-280 1180.2-280L1180.2-280Q1146.6-280 1123.5-256.6Q1100.4-233.1 1100.4-190.4L1100.4-190.4Q1100.4-147 1123.5-123.2Q1146.6-99.4 1180.2-99.4ZM1589.0 0L1456.0 0L1456.0-379.4L1589.0-379.4L1589.0 0ZM1808.1 0L1675.1 0L1675.1-379.4L1801.8-379.4L1801.8-338.1Q1824.2-361.9 1855.4-373.8Q1886.5-385.7 1922.2-385.7L1922.2-385.7Q1966.3-385.7 2002-367.9Q2037.7-350.0 2058.4-312.9Q2079-275.8 2079-217.0L2079-217.0L2079 0L1946 0L1946-195.3Q1946-235.9 1929.2-254.5Q1912.4-273 1883.7-273L1883.7-273Q1851.5-273 1829.8-251.7Q1808.1-230.3 1808.1-183.4L1808.1-183.4L1808.1 0ZM2331.7 6.3L2331.7 6.3Q2258.9 6.3 2218.3-29.8Q2177.7-65.8 2177.7-138.6L2177.7-138.6L2177.7-280.7L2122.4-280.7L2122.4-379.4L2177.7-379.4L2177.7-464.1L2310.7-464.1L2310.7-379.4L2397.5-379.4L2397.5-280.7L2310.7-280.7L2310.7-140Q2310.7-119.0 2321.6-107.8Q2332.4-96.6 2350.6-96.6L2350.6-96.6Q2373.7-96.6 2391.2-108.5L2391.2-108.5L2424.1-15.4Q2406.6-4.2 2382.1 1.1Q2357.6 6.3 2331.7 6.3ZM2714.4-1.5L2714.4-1.5Q2648.7 12.5 2594.4-2.1Q2540.1-16.7 2503.8-54.4Q2467.5-92.1 2455.8-147.6L2455.8-147.6Q2444.0-203.1 2461.5-251.9Q2479.0-300.7 2520.0-335.2Q2561.0-369.6 2619.2-382.0L2619.2-382.0Q2674.0-393.6 2724.0-380.7Q2774.0-367.7 2809.8-330.5Q2845.5-293.4 2858.6-231.8L2858.6-231.8Q2860.1-225.0 2861.3-215.9Q2862.5-206.9 2863.4-199.2L2863.4-199.2L2593.7-141.8Q2607.8-115.5 2634.8-104.8Q2661.8-94.1 2697.4-101.6L2697.4-101.6Q2724.8-107.5 2742.6-119.5Q2760.5-131.5 2776.1-152.0L2776.1-152.0L2859.7-95.3Q2818.5-23.6 2714.4-1.5ZM2577.1-209.9L2577.1-209.9L2729.1-242.2Q2717.3-270.5 2693.5-283.3Q2669.6-296.1 2639.5-289.7L2639.5-289.7Q2609.4-283.3 2592.8-261.9Q2576.3-240.5 2577.1-209.9ZM3057.6 0L2924.6 0L2924.6-519.4L3057.6-519.4L3057.6 0Z"></path>
+<path fill="#FF6302" d="M1419.4 -592.2L1625.6 -492.4L1419.4 -392.7L1419.4 -459.2L1488.1 -492.4L1419.4 -525.7Z"></path>
+</svg></a>
+    <a class="back" href="https://habintel.com">HABINTEL.COM</a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <span class="eyebrow">Whitepaper · Klein zetje. Grote beweging.</span>
+        <h1>De inname is het contactmoment.</h1>
+        <p class="lead">Gezondheid verschuift van moeilijk vol te houden gedrag naar gemakkelijk in te nemen producten. Daarin schuilt een risico dat de industrie zelf nauwelijks benoemt, en een kans die de volksgezondheid nooit eerder had.</p>
+        <div class="points">
+          <p>Waarom de dagelijkse pil een aflaat wordt, en hoe je er een hefboom van maakt</p>
+          <p>Het meetprobleem dat elke claim in supplementen, GLP-1 en overgang kwetsbaar maakt</p>
+          <p>Zes ontwerpprincipes om het grootste dagelijkse gezondheidsmoment ooit te laden met gedrag</p>
+        </div>
+      </div>
+
+      <div class="card" id="formcard">
+        <form id="wpform">
+          <h2>Download de whitepaper</h2>
+          <p class="sub">Beschikbaar in Nederlands en Engels. Geen nieuwsbrief, wel één opvolgmail met een vraag.</p>
+          <label for="name">Naam</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+          <label for="company">Bedrijf</label>
+          <input type="text" id="company" name="company" required autocomplete="organization">
+          <label for="email">Zakelijk e-mailadres</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+          <label>Taal / Language</label>
+          <div style="display:flex;gap:10px;margin-top:2px">
+            <label style="flex:1;margin:0;display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:8px;padding:12px 14px;cursor:pointer;font-family:var(--body);font-size:14px;text-transform:none;letter-spacing:0;color:var(--ink)">
+              <input type="radio" name="lang" value="nl" checked style="accent-color:var(--orange)"> Nederlands
+            </label>
+            <label style="flex:1;margin:0;display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:8px;padding:12px 14px;cursor:pointer;font-family:var(--body);font-size:14px;text-transform:none;letter-spacing:0;color:var(--ink)">
+              <input type="radio" name="lang" value="en" style="accent-color:var(--orange)"> English
+            </label>
+          </div>
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off">
+          <button type="submit" id="btn">Stuur mij de whitepaper</button>
+          <p class="fine">Je gegevens worden alleen gebruikt om de whitepaper te sturen en eenmalig op te volgen. Geen lijstjes, geen doorverkoop.</p>
+        </form>
+        <div class="ok" id="okmsg">
+          <h2>Hij komt eraan.</h2>
+          <p>Check je inbox voor de downloadlink. Of pak hem direct:</p>
+          <a class="dl" id="dl-primary" href="/whitepaper-de-inname-is-het-contactmoment.pdf">Download NL (PDF)</a>
+          <p style="margin-top:12px"><a id="dl-alt" href="/whitepaper-the-intake-is-the-touchpoint.pdf" style="color:var(--orange)">English version (PDF)</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Habintel · Klein zetje. Grote beweging. · behavior intelligence inside</span>
+    <a href="mailto:start@habintel.com" style="color:var(--mut-dark)">start@habintel.com</a>
+  </div>
+</footer>
+
+<script>
+document.getElementById('wpform').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const f=e.target, btn=document.getElementById('btn');
+  if(f.website.value) return; // honeypot
+  btn.disabled=true; btn.textContent='Versturen…';
+  try{
+    await fetch('/api/whitepaper-lead',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name:f.name.value,company:f.company.value,email:f.email.value,lang:f.lang.value})});
+  }catch(err){/* lead-mail mag stil falen; download blijft werken */}
+  const en = f.lang.value==='en';
+  document.getElementById('dl-primary').href = en ? '/whitepaper-the-intake-is-the-touchpoint.pdf' : '/whitepaper-de-inname-is-het-contactmoment.pdf';
+  document.getElementById('dl-primary').textContent = en ? 'Download (PDF, English)' : 'Download NL (PDF)';
+  document.getElementById('dl-alt').href = en ? '/whitepaper-de-inname-is-het-contactmoment.pdf' : '/whitepaper-the-intake-is-the-touchpoint.pdf';
+  document.getElementById('dl-alt').textContent = en ? 'Nederlandse versie (PDF)' : 'English version (PDF)';
+  document.getElementById('wpform').style.display='none';
+  document.getElementById('okmsg').style.display='block';
+});
+</script>
+</body>
+</html>

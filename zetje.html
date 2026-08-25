@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>habintel — een klein zetje, een grote beweging</title>
+<style>
+:root{ --orange:#FF6302; --ink:#0E1B18; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#fff;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:-apple-system,'Segoe UI',Arial,sans-serif;gap:34px}
+body.dark{background:var(--ink)}
+.stage{width:min(560px,86vw)}
+.tag{font-size:clamp(17px,2.6vw,22px);font-weight:700;color:var(--ink);letter-spacing:-.01em;opacity:0;transform:translateY(6px);transition:opacity .5s ease,transform .5s ease}
+body.dark .tag{color:#fff}
+.tag.show{opacity:1;transform:none}
+.tag em{font-style:normal;color:var(--orange)}
+.controls{display:flex;gap:10px}
+button{font-family:inherit;font-size:13px;font-weight:600;border:1px solid #D9DDD6;background:none;color:#5A665F;padding:9px 16px;border-radius:8px;cursor:pointer}
+body.dark button{border-color:#2E3B36;color:#93A39B}
+button:hover{border-color:var(--orange);color:var(--orange)}
+
+/* geometry: small chevron nudges in, big chevron launches */
+#small{opacity:0}
+#big{}
+.play #small{animation:nudge 1.1s cubic-bezier(.3,0,.2,1) .2s forwards}
+.play #big{animation:launch 1.6s cubic-bezier(.5,0,.15,1) 1.0s forwards}
+@keyframes nudge{
+  0%{opacity:0;transform:translateX(-120px)}
+  60%{opacity:1;transform:translateX(-26px)}   /* arrives, keeps clear distance */
+  74%{transform:translateX(-26px) scale(1.14)} /* the pulse: signal, no contact */
+  100%{opacity:1;transform:translateX(-26px) scale(1)}
+}
+@keyframes launch{
+  0%{transform:translateX(0)}
+  14%{transform:translateX(-5px)}   /* tiny anticipation */
+  100%{transform:translateX(230px)}
+}
+@media (prefers-reduced-motion: reduce){
+  .play #small{animation:none;opacity:1;transform:translateX(-26px)}
+  .play #big{animation:none;transform:translateX(230px)}
+}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <svg viewBox="0 0 560 240" width="100%" aria-label="Een kleine chevron geeft een grote chevron een zetje">
+      <!-- big chevron -->
+      <g id="big">
+        <path d="M150,30 L330,120 L150,210 L150,158 L230,120 L150,82 Z" fill="#FF6302"/>
+      </g>
+      <!-- small chevron -->
+      <g id="small" style="transform-origin:110px 120px">
+        <path d="M78,84 L150,120 L78,156 L78,135 L108,120 L78,105 Z" fill="#FF6302"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="tag" id="tag">Klein zetje. <em>Grote beweging.</em><div style="font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#93A39B;margin-top:8px">behavior intelligence inside</div></div>
+
+  <div class="controls">
+    <button onclick="play()">Opnieuw</button>
+    <button onclick="document.documentElement.requestFullscreen();this.parentNode.style.display='none'">Presentatiemodus</button>
+    <button onclick="document.body.classList.toggle('dark')">Licht / donker</button>
+  </div>
+
+<script>
+const tag=document.getElementById('tag');
+function play(){
+  document.body.classList.remove('play');
+  tag.classList.remove('show');
+  void document.body.offsetWidth; // reflow to restart animations
+  document.body.classList.add('play');
+  setTimeout(()=>tag.classList.add('show'),1900);
+}
+play();
+document.addEventListener('keydown',function(e){
+  if(e.key.toLowerCase()==='p'){
+    if(document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+    document.querySelector('.controls').style.display='none';
+  }
+});
+document.querySelector('.stage').addEventListener('click',play);
+</script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0F6B5C">
+<title>Demo · Mijn Kuur</title>
+<style>
+:root{--teal:#0F6B5C;--teal-l:#E4F1EE;--ink:#15211E;--mut:#63736E;--line:#E2E8E5;
+--bg:#F6F9F8;--orange:#FF6302;--warn:#FDF0E4;--ok:#188A55}
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,'Segoe UI',Arial,sans-serif}
+body{background:#2A3532;display:flex;justify-content:center;align-items:flex-start;padding:26px;gap:26px;flex-wrap:wrap;min-height:100vh}
+.note{color:#B8C4C0;max-width:250px;font-size:13px;line-height:1.55;padding-top:8px}
+.note h1{color:#fff;font-size:17px;margin-bottom:10px}
+.note b{color:#fff}
+.note .badge{display:inline-flex;align-items:center;gap:5px;background:#15211E;border-radius:16px;padding:5px 11px;font-size:10.5px;margin-top:14px;color:#fff}
+.note .badge i{font-style:normal;color:var(--orange);font-weight:800}
+.phone{width:375px;background:var(--bg);border-radius:34px;box-shadow:0 30px 80px rgba(0,0,0,.5);overflow:hidden;border:10px solid #101917}
+.top{background:var(--teal);color:#fff;padding:18px 18px 14px}
+.top .apo{font-size:11px;opacity:.8;letter-spacing:.06em;text-transform:uppercase}
+.top h2{font-size:19px;margin-top:2px}
+.notif{background:#15211E;color:#fff;margin:10px;border-radius:12px;padding:11px 13px;font-size:12.5px;display:none;line-height:1.4}
+.notif b{color:#FFC38F}
+.tabs{display:flex;background:#fff;border-bottom:1px solid var(--line)}
+.tab{flex:1;text-align:center;padding:11px 2px;font-size:10.5px;color:var(--mut);cursor:pointer;border-bottom:2.5px solid transparent}
+.tab.on{color:var(--teal);border-color:var(--teal);font-weight:700}
+.scr{display:none;padding:16px;min-height:430px}
+.scr.on{display:block}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:15px;margin-bottom:12px}
+h3{font-size:15px;margin-bottom:8px}
+p,li{font-size:13px;color:var(--ink);line-height:1.5}
+.mut{color:var(--mut);font-size:12px}
+.pill{display:inline-block;background:var(--teal-l);color:var(--teal);border-radius:14px;padding:4px 11px;font-size:11.5px;font-weight:700;margin:2px 4px 2px 0}
+.dagrij{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.dag{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--mut);background:#fff}
+.dag.done{background:var(--teal);border-color:var(--teal);color:#fff;font-weight:700}
+.dag.today{border-color:var(--orange);color:var(--ink);font-weight:700}
+.bigbtn{width:100%;background:var(--teal);color:#fff;border:none;border-radius:12px;padding:15px;font-size:15px;font-weight:700;cursor:pointer;margin-top:6px}
+.bigbtn.done{background:var(--ok)}
+.ghost{width:100%;background:#fff;color:var(--teal);border:1.5px solid var(--teal);border-radius:12px;padding:12px;font-size:13.5px;font-weight:700;cursor:pointer;margin-top:10px}
+.reeks{text-align:center;margin:8px 0 2px}
+.reeks b{font-size:26px;color:var(--teal)}
+.warnbox{background:var(--warn);border-radius:12px;padding:13px;font-size:12.5px;line-height:1.5;margin-top:10px}
+.slider{width:100%;margin:14px 0 4px;accent-color:var(--teal)}
+.smiley{text-align:center;font-size:34px;margin-top:4px}
+svg.chart{width:100%;height:110px;margin-top:8px}
+.dash td{font-size:12px;padding:6px 4px;border-bottom:1px solid var(--line)}
+.dash th{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut);text-align:left;padding:4px}
+.bar{height:8px;border-radius:4px;background:var(--teal-l);position:relative;min-width:70px}
+.bar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--teal)}
+.foot{padding:9px;text-align:center;font-size:9.5px;color:var(--mut);background:#fff;border-top:1px solid var(--line)}
+.foot i{font-style:normal;color:var(--orange);font-weight:800}
+@media (max-width:640px){
+  body{padding:0;background:var(--bg);display:block}
+  .note{display:none}
+  .phone{width:100%;max-width:none;border:none;border-radius:0;box-shadow:none;min-height:100vh}
+  .top{padding-top:calc(18px + env(safe-area-inset-top))}
+  .scr{min-height:calc(100vh - 230px)}
+}
+</style>
+</head>
+<body>
+
+<div class="note">
+  <h1>Demo · Mijn Kuur</h1>
+  <p>Wat de patiënt krijgt in plaats van het A4 bij eerste uitgifte. De apotheker vult 4 velden in; de patiënt opent een link of QR. Geen download, geen wachtwoord.</p>
+  <p style="margin-top:10px"><b>Klik gerust rond:</b> afvinken werkt, het gevoelsschuifje werkt, en de knop hieronder toont het zetje na twee gemiste dagen.</p>
+  <button class="ghost" style="margin-top:14px" onclick="document.getElementById('notif').style.display='block'">Toon voorbeeld-zetje</button>
+  <span class="badge">powered by habintel <i>&gt;</i> behavior intelligence inside</span>
+</div>
+
+<div class="phone">
+  <div class="top">
+    <div class="apo">Apotheek De Linde · eerste uitgifte</div>
+    <h2>Amoxicilline 500 mg · kuur 10 dagen</h2>
+  </div>
+  <div class="notif" id="notif"><b>Zetje · dag 5, 08:00</b><br>Gisteren gemist? Dat overkomt de meeste mensen juist halverwege. Pak vandaag gewoon de draad op; je schema loopt door. Twijfel je wat te doen: tik op Vergeten.</div>
+  <div class="tabs">
+    <div class="tab on" onclick="go(0,this)">Mijn middel</div>
+    <div class="tab" onclick="go(1,this)">Schema</div>
+    <div class="tab" onclick="go(2,this)">Vergeten?</div>
+    <div class="tab" onclick="go(3,this)">Gevoel</div>
+    <div class="tab" onclick="go(4,this)">Apotheek</div>
+  </div>
+
+  <!-- 0 Mijn middel -->
+  <div class="scr on">
+    <div class="card">
+      <h3>Amoxicilline 500 mg</h3>
+      <span class="pill">3x per dag</span><span class="pill">10 dagen</span><span class="pill">bij het eten</span>
+      <p style="margin-top:10px">Antibioticum tegen bacteriële infecties. Maak de kuur helemaal af, ook als je je eerder beter voelt: anders kan de infectie terugkomen.</p>
+    </div>
+    <div class="card">
+      <h3>Goed om te weten</h3>
+      <p class="mut">Meest gemelde bijwerkingen: maag-darmklachten, huiduitslag. De volledige officiële bijsluiter:</p>
+      <button class="ghost">Open bijsluiter (officiële tekst)</button>
+    </div>
+    <p class="mut" style="text-align:center">Vragen? Bel Apotheek De Linde: 073 123 45 67</p>
+  </div>
+
+  <!-- 1 Schema -->
+  <div class="scr">
+    <div class="reeks"><b id="dagnr">Dag 5</b> <span class="mut">van 10 · kuur t/m di 8 sep</span></div>
+    <div class="card">
+      <div class="dagrij" id="dagen"></div>
+      <button class="bigbtn" id="vink" onclick="afvinken()">Inname van vanochtend afvinken</button>
+      <p class="mut" style="margin-top:8px;text-align:center">Vandaag: 08:00 ✓ · 14:00 · 20:00</p>
+    </div>
+    <div class="card"><p class="mut">Je hebt tot nu toe <b>12 van de 13</b> innames gedaan. Sterk bezig: het is jouw kuur en jouw herstel.</p></div>
+  </div>
+
+  <!-- 2 Vergeten -->
+  <div class="scr">
+    <div class="card">
+      <h3>Inname vergeten?</h3>
+      <p>Dit zegt de officiële bijsluiter van jouw middel:</p>
+      <div class="warnbox">"Neem de vergeten dosis alsnog in, tenzij het bijna tijd is voor de volgende dosis. Neem nooit een dubbele dosis om een vergeten dosis in te halen."</div>
+      <p class="mut" style="margin-top:10px">Twijfel je? Bel dan even, daar zijn we voor.</p>
+      <button class="bigbtn">Bel Apotheek De Linde</button>
+    </div>
+  </div>
+
+  <!-- 3 Gevoel -->
+  <div class="scr">
+    <div class="card">
+      <h3>Hoe voel je je vandaag?</h3>
+      <div class="smiley" id="sm">🙂</div>
+      <input type="range" min="1" max="5" value="4" class="slider" oninput="voel(this.value)">
+      <p class="mut" style="text-align:center">1 = beroerd · 5 = prima</p>
+    </div>
+    <div class="card">
+      <h3>Jouw herstel tot nu toe</h3>
+      <svg class="chart" viewBox="0 0 300 100">
+        <line x1="0" y1="90" x2="300" y2="90" stroke="#E2E8E5"/>
+        <polyline points="10,78 68,72 126,60 184,40 242,30 290,22" fill="none" stroke="#0F6B5C" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="290" cy="22" r="4" fill="#0F6B5C"/>
+      </svg>
+      <p class="mut">Je voelt je elke dag iets beter, en jij deed 12 van de 13 innames. Dat is niet toevallig hetzelfde plaatje.</p>
+    </div>
+  </div>
+
+  <!-- 4 Apotheek -->
+  <div class="scr">
+    <div class="card">
+      <h3>Wat de apotheek ziet (geaggregeerd)</h3>
+      <table class="dash" style="width:100%;border-collapse:collapse">
+        <tr><th>Middel</th><th>Kuur afgemaakt</th><th></th></tr>
+        <tr><td>Amoxicilline</td><td style="width:80px"><div class="bar"><i style="width:84%"></i></div></td><td>84%</td></tr>
+        <tr><td>Statines (1e uitgifte)</td><td><div class="bar"><i style="width:58%"></i></div></td><td>58%</td></tr>
+        <tr><td>Antidepressiva (start)</td><td><div class="bar"><i style="width:46%"></i></div></td><td>46%</td></tr>
+      </table>
+      <p class="mut" style="margin-top:10px">Afhaken zit vooral in week 2-3. Nooit op persoonsniveau zonder toestemming; wel eindelijk zicht op wat er na de balie gebeurt.</p>
+    </div>
+    <div class="card">
+      <h3>Einde kuur</h3>
+      <p class="mut">Bij herhaalmedicatie:</p>
+      <button class="ghost">Vervolgrecept aanvragen bij de apotheek</button>
+    </div>
+  </div>
+
+  <div class="foot">Demo met fictieve gegevens · vervangt geen medisch advies · powered by habintel <i>&gt;</i></div>
+</div>
+
+<script>
+const scrs=[...document.querySelectorAll('.scr')], tabs=[...document.querySelectorAll('.tab')];
+function go(i,el){scrs.forEach(s=>s.classList.remove('on'));tabs.forEach(t=>t.classList.remove('on'));scrs[i].classList.add('on');el.classList.add('on');}
+const dagen=document.getElementById('dagen');
+for(let d=1;d<=10;d++){const el=document.createElement('div');el.className='dag'+(d<5?' done':d===5?' today':'');el.textContent=d;dagen.appendChild(el);}
+function afvinken(){const b=document.getElementById('vink');b.classList.add('done');b.textContent='Afgevinkt ✓ · dag 5 van je reeks';document.querySelectorAll('.dag')[4].classList.add('done');}
+function voel(v){document.getElementById('sm').textContent=['😖','🙁','😐','🙂','😄'][v-1];}
+</script>
+</body>
+</html>
